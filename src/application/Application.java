@@ -35,9 +35,16 @@ public class Application {
 		CountDownLatch waitForExit = new CountDownLatch( 2 );
 
 		/*
+		 * RepositoryBuilder is a Spring @Component that builds repositories.
+		 */
+		final RepositoryBuilder repositoryBuilder = RepositoryBuilder.getInstance();
+
+		/*
 		 * AppBuilder builds applications components and returns a startable Runner instance.
 		 */
 		AppBuilder appBuilder = AppBuilder.getInstance();
+		appBuilder.inject( repositoryBuilder );
+
 		RunnerIntf appRunner = appBuilder.build();
 
 		/*
@@ -57,7 +64,6 @@ public class Application {
 			onStart -> {
 				logger.log( LoggerTopics.Info, appName + " starting..." );
 
-				final RepositoryBuilder repositoryBuilder = RepositoryBuilder.getInstance();
 				repositoryBuilder.startup();
 
 				/*
@@ -131,7 +137,6 @@ public class Application {
 			logger.log( LoggerTopics.Info, appName + " running..." );
 			waitForExit.await();
 
-			final RepositoryBuilder repositoryBuilder = RepositoryBuilder.getInstance();
 			repositoryBuilder.shutdown();
 
 		} catch( InterruptedException e ) {
