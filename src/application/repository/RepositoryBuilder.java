@@ -119,10 +119,10 @@ public class RepositoryBuilder implements BuilderIntf {
 			.addContact( "cell: +49 170 82568462" )
 			.setAddress( "Lindenweg 86, 12167 Berlin-Steglitz" )
 			.setStatus( Customer.Status.SUSP )
-			.addNote( "Zahlt Rechnung verspÃ¤tet." )
+			.addNote( "Zahlt Rechnung verspätet." )
 			.addNote( "Beschwert sich über Mitarbeiter." )
 			.addNote( "Greift Angestellte verbal an." )
-			.addNote( "Wurde aus dem GeschÃ¤ft verwiesen. Ein Zutrittsverbot wurde ausgesprochen." );
+			.addNote( "Wurde aus dem Geschäft verwiesen. Ein Zutrittsverbot wurde ausgesprochen." );
 		list.add( c );
 
 		list.add( new Customer( "Matteo Schwarz" ).setAddress( "Grossweg 4, 79805 Aschaffenburg" ).addContact( "matteo.schwarz@gmail.com" ) );
@@ -181,7 +181,7 @@ public class RepositoryBuilder implements BuilderIntf {
 
 		customerRepository.findByName( "Matteo" ).ifPresent( c2 -> {
 			c2.addContact( "matteo@yahoo.com" ).addContact( "max88@gmail.com" ).addContact( "030 3849-5039" ).addContact( "+49 170 9369224" )
-				.addNote( "Kunde moechte Rechnung per Post erhalten." )
+				.addNote( "Kunde möchte Rechnung per Post erhalten." )
 				.addNote( "Kunde hat Rechnung bezahlt." );
 		});
 
